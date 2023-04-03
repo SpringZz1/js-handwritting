@@ -1,12 +1,12 @@
 # 模拟实现call
-一句话介绍call(): call()方法在接收一个指定的this值和若干个指定的参数值的前提下调用某个函数或方法  
+一句话介绍<code>call()</code>: <code>call()</code>方法在接收一个指定的<code>this</code>值和若干个指定的参数值的前提下调用某个函数或方法  
 所以我们模拟的时候要考虑以下几点:
 - 函数中添加一个属性(函数)
 - 执行该函数
 - 删除该函数  
 
-但是call()还能接收参数，并且参数是不定长的，我们该如何解决呢？也很简单，通过自定义一个数组来接收arguments即可  
-最后怎么执行这个添加的函数和得到的参数呢？有两种方法，一种是使用ES3的eval()，还有一种是使用ES6的...运算符，接下来我们就试试两种方法吧:
+但是<code>call()</code>还能接收参数，并且参数是不定长的，我们该如何解决呢？也很简单，通过自定义一个数组来接收<code>arguments</code>即可  
+最后怎么执行这个添加的函数和得到的参数呢？有两种方法，一种是使用<code>ES3</code>的<code>eval()</code>，还有一种是使用<code>ES6</code>的<code>...</code>运算符，接下来我们就试试两种方法吧:
 ```
 // ES3
 
@@ -26,8 +26,8 @@ Function.prototype.myCall = function(context) {
   return result;
 }
 ```
-可见ES3的方法实现call()还是挺麻烦的, 但是call方法是ES5的内容用ES6方法实现有些怪怪的, 所以还是老老实实用ES3的eval吧  
-但是既然ES6有更方便的方法, 还是值得我们一试的，来看看吧:
+可见<code>ES3</code>的方法实现<code>call()</code>还是挺麻烦的, 但是<code>call()</code>是<code>ES5</code>的内容用<code>ES6</code>方法实现有些怪怪的, 所以还是老老实实用<code>ES3</code>的<code>eval()</code>吧  
+但是既然<code>ES6</code>有更方便的方法, 还是值得我们一试的，来看看吧:
 ```
 // ES6
 Function.prototype.myCall = function(context) {
@@ -44,8 +44,8 @@ Function.prototype.myCall = function(context) {
 }
 ```
 # 模拟实现apply
-一句话介绍apply()，apply()和call()的作用是一样的，都是接收一个this对象，不同之处在于apply通过一个数组来接受参数，而call()是通过将参数一个一个传入的。  
-接下来模拟实现一下apply，实际上的思路是差不多的，我们还是用两种方法来模拟实现
+一句话介绍<code>apply()</code>，<code>apply()</code>和<code>call()</code>的作用是一样的，都是接收一个<code>this</code>对象，不同之处在于<code>apply()</code>通过一个数组来接受参数，而<code>call()</code>是通过将参数一个一个传入的。  
+接下来模拟实现一下<code>apply()</code>，实际上的思路是差不多的，我们还是用两种方法来模拟实现
 ```
 // ES3
 Function.prototype.myApply = function (context, arr) {
@@ -67,7 +67,7 @@ Function.prototype.myApply = function (context, arr) {
   return result;
 };
 ```
-可以看出和call()的实现方法是差不多的，只是针对参数传入方式进行了一定修改，让我们看看ES6方法
+可以看出和<code>call()</code>的实现方法是差不多的，只是针对参数传入方式进行了一定修改，让我们看看<code>ES6</code>方法
 ```
 // ES6
 Function.prototype.myApply = function(context, arr) {
