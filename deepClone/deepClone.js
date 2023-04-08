@@ -18,6 +18,15 @@ let newArr = JSON.parse(JSON.stringify(arr));
  * 2. 手写深拷贝
  */
 function deepClone(source, map = new Map()) {
+  if (source instanceof RegExp) {
+    return new RegExp(source);
+  }
+  if (source instanceof Date) {
+    return new Date(source);
+  }
+  if (source instanceof Function) {
+    return source;
+  }
   let target = Array.isArray(source) ? [] : {};
   // 防止循环引用导致深拷贝死循环
   if (map.get(source)) return source;
